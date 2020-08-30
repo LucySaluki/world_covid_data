@@ -50,13 +50,6 @@ export default {
         .then(res => res.json())
         .then(countrydata => this.countries= countrydata.data);
       },
-      gatherCountryData: function (countriesAll){
-        const countries= [["location", "confirmed","recovered","dead"]];
-        countriesAll.forEach((country)=> {
-          const newCountry =[country.location, country.confirmed, country.recovered, country.dead];
-          countries.push(newCountry);
-        }); return countries;
-      },
     gatherLocationData: function (locationAll) {
       const locations = [["Longitude", "Latitude"]];
       locationAll.forEach((location) => {
