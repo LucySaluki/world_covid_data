@@ -30,9 +30,5 @@ export default {
 </script>
 
 <style>
-#world-covid-chart{
-    height:700px;
-    width: 1200px;
 
-}
 </style>

@@ -3,7 +3,12 @@
     <header-logo/>
     <h1>Worldwide Coronavirus Cases</h1>
     <google-chart :locations="locations"></google-chart>
-    <CountryList :countries="countries"/>
+    <label for="country_select">Select a Country:</label>
+    <select id="country_select" v-model="selectedCountry">
+      <option disabled value="">Select a country</option>
+      <option v-for="(country, index) in countries" :key="index" :value="country">{{country.location}}</option>
+    </select>
+    <country-detail v-if="selectedCountry" :selectedCountry="selectedCountry"/>
   </div>
 </template>
 
@@ -19,7 +24,8 @@ export default {
   data() {
     return {
       locations:[],
-      countries:[]
+      countries:[], 
+      selectedCountry:null
     }
   },
   components: {
@@ -31,6 +37,7 @@ export default {
   mounted(){
       this.fetchLocations();
       this.fetchCountries();
+      eventBus.$on('selectedCountry', country => this.selectedCountry = country);
     },
     methods: {
       fetchLocations: function(){
@@ -42,6 +49,13 @@ export default {
         fetch('https://www.trackcorona.live/api/countries')
         .then(res => res.json())
         .then(countrydata => this.countries= countrydata.data);
+      },
+      gatherCountryData: function (countriesAll){
+        const countries= [["location", "confirmed","recovered","dead"]];
+        countriesAll.forEach((country)=> {
+          const newCountry =[country.location, country.confirmed, country.recovered, country.dead];
+          countries.push(newCountry);
+        }); return countries;
       },
     gatherLocationData: function (locationAll) {
       const locations = [["Longitude", "Latitude"]];

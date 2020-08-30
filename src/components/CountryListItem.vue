@@ -10,7 +10,7 @@ export default {
     props:['country'],
     methods:{
         handleClick() {
-            eventBus.$emit('country-selected', this.country);
+            eventBus.$emit('selectedCountry', this.country);
         }
     }
 
