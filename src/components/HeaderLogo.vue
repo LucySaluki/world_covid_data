@@ -2,7 +2,7 @@
   
 <div id="header-logo">
     <img src="@/assets/covid_logo.png" alt=""><br>
-    <p>Credit to TrackCorona Live site</p>
+    <a href="https://www.trackcorona.live/">Credit to TrackCorona Live site</a>
   </div>
 </template>
 
@@ -16,5 +16,10 @@ export default {
 #header-logo{
   font-size:10px;
   margin:10px;
+}
+a {
+  color:whitesmoke;
+  text-decoration: none;
+  cursor:pointer;
 }
 </style>

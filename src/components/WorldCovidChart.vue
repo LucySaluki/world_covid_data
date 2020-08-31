@@ -20,7 +20,7 @@ export default {
         colors: ['#e15052'],
         pointShape: {type:'square'},
         height:700,
-        width: 1200
+        width: 1300
       },
       chartType:"ScatterChart"
       }
